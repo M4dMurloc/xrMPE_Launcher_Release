@@ -1,6 +1,6 @@
 {
     "name": "xrmpe-launcher",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Game launcher",
     "main": "markup/dist/js/main.js",
     "dependencies": {
