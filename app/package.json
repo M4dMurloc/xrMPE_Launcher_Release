@@ -1,0 +1,75 @@
+{
+    "name": "xrmpe-launcher",
+    "version": "0.0.2",
+    "description": "Game launcher",
+    "main": "markup/dist/js/main.js",
+    "dependencies": {
+        "7zip-bin": "^5.0.3",
+        "electron-log": "^4.2.0",
+        "electron-updater": "^4.3.5",
+        "elevator": "^2.2.3",
+        "follow-redirects": "^1.13.0",
+        "googleapis": "30",
+        "md5": "^2.2.1",
+        "node-7z": "^2.1.1",
+        "open": "^7.0.3",
+        "regedit": "^3.0.3",
+        "request": "^2.88.2",
+        "uikit": "^3.5.4"
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.27",
+        "electron": "^9.0.0",
+        "electron-builder": "^22.8.1",
+        "javascript-obfuscator": "^2.4.2",
+        "typescript": "^4.0.3"
+    },
+    "scripts": {
+        "rmbuild": "rmdir /s /q dist",
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "p": "electron-builder --ia32 --x64 -p always",
+        "postinstall": "electron-builder install-app-deps",
+        "release": "build",
+        "tsc": "tsc",
+        "watch": "tsc -w",
+        "jo": "javascript-obfuscator ./markup/dist/js-raw --output ./markup/dist/obf --debug-protection true --split-strings true --split-strings-chunk-length 4 --string-array-encoding base64 --self-defending true"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/M4dMurloc/xrMPE_Launcher_Release"
+    },
+    "author": "xrMPE",
+    "license": "Proprietary",
+    "bugs": {
+        "url": "https://github.com/M4dMurloc/xrMPE_Launcher_Release/issues"
+    },
+    "homepage": "https://github.com/M4dMurloc/xrMPE_Launcher_Release#readme",
+    "build": {
+        "publish": [
+            {
+                "provider": "github",
+                "owner": "M4dMurloc",
+                "repo": "xrMPE_Launcher_Release"
+            }
+        ],
+        "appId": "com.xrmpe.launcher",
+        "productName": "xrMPE Launcher",
+        "asarUnpack": [
+            "node_modules/regedit",
+            "node_modules/open",
+            "node_modules/7zip-bin"
+        ],
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "perMachine": true,
+            "artifactName": "xrMPE-Launcher-Setup-${version}.${ext}"
+        }
+    },
+    "win": {
+        "target": "nsis",
+        "icon": "build/icon.ico"
+    }
+}
